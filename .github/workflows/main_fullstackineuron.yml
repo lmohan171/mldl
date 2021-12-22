@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://index.docker.io/v1/
-        username: ${{ secrets.AzureAppService_ContainerUsername_7958c1742e1844a99357e09a663f956d }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_f78af1dcef9b4da39c982428bf24ce03 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_d9c6d03d6b82472693d0d29c619c1129 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_305b5173294a4a6b8398e11b214f805a }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_7958c1742e1844a99357e09a663f956d }}/project:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_d9c6d03d6b82472693d0d29c619c1129 }}/lalit1205/project:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'fullstackineuron'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_82f8a7de8554459ca8d8246a4dc7ca07 }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_7958c1742e1844a99357e09a663f956d }}/project:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_1460433ad240449ba15b30284348699c }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_d9c6d03d6b82472693d0d29c619c1129 }}/lalit1205/project:${{ github.sha }}'
